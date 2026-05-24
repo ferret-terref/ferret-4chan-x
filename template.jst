@@ -4,7 +4,6 @@
 <title>4chan X</title>
 <link rel="stylesheet" href="web.css">
 <link rel="icon" href="img/icon.gif">
-<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ohnjgmpcibpbafdlkimncjhflgedgpam">
 </head><body>
 <div id="header">
 <h1 id="4chan-x">4chan X</h1>
@@ -36,21 +35,10 @@ function imagePreview() {
   span.appendChild(img);
   this.parentNode.insertBefore(span, this.nextSibling);
 }
-function storeInstall(e) {
-  if (!e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey && e.button === 0) {
-    var url = this.href;
-    chrome.webstore.install(url, function(){}, function(){
-      location.href = url;
-    });
-    e.preventDefault();
-  }
-}
 for (var i = 0; i < document.links.length; i++) {
   var link = document.links[i];
   if (/\.png$/.test(link.pathname) && !link.querySelector('.hover')) {
     link.addEventListener('mouseover', imagePreview, false);
-  } else if (window.chrome && link.host === 'chrome.google.com') {
-    link.addEventListener('click', storeInstall, false);
   }
 }
 var engine = (function() {
