@@ -182,6 +182,11 @@ SW.yotsuba =
       for type in ['Sticky', 'Closed'] when (icon = $ "img[alt=#{type}]", nodes.info)
         $.addClass icon, "#{type.toLowerCase()}Icon", 'retina'
 
+  parseInfo: (post) ->
+    # Parse name field into name and tripcode parts.
+    if not post.info.tripcode? and /\!/.test(post.info.name)
+      [_, post.info.name, post.info.tripcode] = post.info.name.match(/(.*?) ?(\!.*)/)
+
   parseDate: (node) ->
     new Date(node.dataset.utc * 1000)
 

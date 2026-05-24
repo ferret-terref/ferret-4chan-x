@@ -41,6 +41,7 @@ class Post
       flagCodeTroll: @nodes.flag?.className.match(/bfl-(\w+)/)?[1].toUpperCase()
       flag:      @nodes.flag?.title
       date:      if @nodes.date then g.SITE.parseDate(@nodes.date)
+    g.SITE.parseInfo?(@)
 
     if Conf['Anonymize']
       @info.nameBlock = 'Anonymous'
