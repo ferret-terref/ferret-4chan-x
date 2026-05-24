@@ -4,6 +4,9 @@
 
 ### v1.14.24
 
+**v1.14.24.1** *(2026-05-24)* - [[Userscript](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.1/builds/4chan-X-noupdate.user.js)] [[Chrome extension](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.1/builds/4chan-X-noupdate.crx)]
+- Make tripcode filtering work again after 4chan update.
+
 **v1.14.24.0** *(2026-05-24)* - [[Userscript](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.0/builds/4chan-X-noupdate.user.js)] [[Chrome extension](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.0/builds/4chan-X-noupdate.crx)]
 - Based on v1.14.23.2.
 - (Demitrix2k) Fix bugs related to filename field caused by 4chan site update.
