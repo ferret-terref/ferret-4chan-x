@@ -262,7 +262,7 @@ jshint : .events/jshint
 
 install : .events/install
 
-push : .events2/push-git .events2/push-web .events2/push-store
+push : .events2/push-git .events2/push-web
 
 clean :
 	$(RMDIR) tmp tmp-crx testbuilds .events
