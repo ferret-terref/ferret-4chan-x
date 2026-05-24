@@ -75,7 +75,7 @@ To install the current **beta** version but get updates from the **stable** chan
 - [Install userscript](https://github.com/ccd0/4chan-x/raw/beta/builds/4chan-X.user.js)
 
 ## Troubleshooting
-If you encounter a bug, try the steps [here](https://github.com/ccd0/4chan-x/blob/master/CONTRIBUTING.md#reporting-bugs), then report it to the [issue tracker](https://github.com/ccd0/4chan-x/issues?q=is%3Aopen+sort%3Aupdated-desc). If the bug seems to be caused by a script update, you can install a old version from the [changelog](https://github.com/ccd0/4chan-x/blob/master/CHANGELOG.md).
+If you encounter a bug, try the steps [here](https://github.com/ccd0/4chan-x/blob/master/CONTRIBUTING.md#reporting-bugs), then report it to the [issue tracker](https://github.com/ccd0/4chan-x/issues?q=is%3Aopen+sort%3Aupdated-desc). If the bug seems to be caused by a script update, you can install a old version from the [changelog](https://github.com/ccd0/4chan-x/blob/master/CHANGELOG.md). You can also reach me in the [4chan X thread on Kissu](https://kissu.moe/maho/res/40), and this is the quickest way to get my attention if there is an urgent problem.
 
 ## More information
 - [Changelog](https://github.com/ccd0/4chan-x/blob/master/CHANGELOG.md)
