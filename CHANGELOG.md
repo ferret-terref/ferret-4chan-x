@@ -2,6 +2,15 @@
 
 -Sometimes the changelog has notes (not comprehensive) acknowledging people's work. This does not mean the changes are their fault, only that their code was used. All changes to the script are chosen by and the fault of the maintainer (ccd0).
 
+### v1.14.24
+
+**v1.14.24.0** *(2026-05-24)* - [[Userscript](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.0/builds/4chan-X-noupdate.user.js)] [[Chrome extension](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.24.0/builds/4chan-X-noupdate.crx)]
+- Based on v1.14.23.2.
+- (Demitrix2k) Fix bugs related to filename field caused by 4chan site update.
+- Update URLs for GNFOS and Sushi; remove Himasugi.
+- Add Wapchan and 39chan to sites 4chan X is enabled on by default.
+- Make file-related features currently working for Tinyboard derivatives work on 39chan.
+
 ### v1.14.23
 
 **v1.14.23.2** *(2025-12-16)* - [[Userscript](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.23.2/builds/4chan-X-noupdate.user.js)] [[Chrome extension](https://raw.githubusercontent.com/ccd0/4chan-x/1.14.23.2/builds/4chan-X-noupdate.crx)]
