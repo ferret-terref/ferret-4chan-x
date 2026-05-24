@@ -100,7 +100,7 @@ SW.tinyboard =
       isClosed:   '.fa-lock'
     file:
       text:  '.fileinfo'
-      link:  '.fileinfo > a'
+      link:  '.fileinfo > a, .fileinfo > .unimportant > a[download]'
       thumb: 'a > .post-image'
     thumbLink: '.file > a'
     multifile: '.files > .file'
@@ -209,7 +209,10 @@ SW.tinyboard =
   parseFile: (post, file) ->
     {text, link, thumb} = file
     return false if $.x("ancestor::#{@xpath.postContainer}[1]", text) isnt post.nodes.root # file belongs to a reply
-    return false if not (infoNode = if '(' in link.nextSibling?.textContent then link.nextSibling else link.nextElementSibling)
+    if link.parentNode is text
+      return false if not (infoNode = if '(' in link.nextSibling?.textContent then link.nextSibling else link.nextElementSibling)
+    else
+      infoNode = link.parentNode
     return false if not (info = infoNode.textContent.match /\((.*,\s*)?([\d.]+ ?[KMG]?B).*\)/)
     nameNode = $ '.postfilename', text
     $.extend file,
