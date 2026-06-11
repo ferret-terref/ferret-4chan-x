@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         4chan X
-// @version      1.14.24.1
+// @name         4chan X Ferret Edition
+// @version      1.14.24.2
 // @minGMVer     1.14
 // @minFFVer     26
 // @namespace    4chan-X
-// @description  4chan X is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/ccd0/4chan-x/blob/master/LICENSE 
+// @description  4chan X (Ferret Edition) is a script that adds various features to anonymous imageboards.
+// @license      MIT; https://github.com/ferret-terref/ferret-4chan-x/blob/master/LICENSE 
 // @include      http://boards.4chan.org/*
 // @include      https://boards.4chan.org/*
 // @include      http://sys.4chan.org/*
