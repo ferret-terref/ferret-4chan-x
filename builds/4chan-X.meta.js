@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         4chan X Ferret Edition
-// @version      1.14.24.2
+// @version      1.14.24.3
 // @minGMVer     1.14
 // @minFFVer     26
 // @namespace    4chan-X

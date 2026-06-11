@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         4chan X Ferret Edition
-// @version      1.14.24.2
+// @version      1.14.24.3
 // @minGMVer     1.14
 // @minFFVer     26
 // @namespace    4chan-X
@@ -211,7 +211,7 @@ docSet = function() {
 };
 
 g = {
-  VERSION:   '1.14.24.2',
+  VERSION:   '1.14.24.3',
   NAMESPACE: '4chan X Ferret Edition.',
   sites:     Object.create(null),
   boards:    Object.create(null)
@@ -3797,6 +3797,37 @@ a:only-of-type > .remove {\n\
 }\n\
 .gal-return-original {\n\
   display: none;\n\
+}\n\
+.gal-thumb-external {\n\
+  height: 100px !important;\n\
+  display: flex !important;\n\
+  align-items: center;\n\
+  justify-content: center;\n\
+  background: rgba(100, 100, 100, 0.3) !important;\n\
+  border: 2px dashed rgba(150, 150, 150, 0.5);\n\
+  line-height: normal !important;\n\
+}\n\
+.gal-thumb-external:hover {\n\
+  background: rgba(120, 120, 120, 0.4) !important;\n\
+  border-color: rgba(180, 180, 180, 0.7);\n\
+}\n\
+.gal-thumb-external-icon {\n\
+  text-align: center;\n\
+  font-size: 48px;\n\
+  line-height: 1;\n\
+  position: relative;\n\
+}\n\
+.gal-thumb-external-label {\n\
+  position: absolute;\n\
+  bottom: -20px;\n\
+  left: 50%;\n\
+  transform: translateX(-50%);\n\
+  font-size: 14px;\n\
+  font-weight: bold;\n\
+  color: #ffffff;\n\
+  background: rgba(0, 0, 0, 0.7);\n\
+  padding: 2px 6px;\n\
+  border-radius: 3px;\n\
 }\n\
 .gal-thumb-link-indicator {\n\
   position: absolute;\n\

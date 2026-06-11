@@ -2500,6 +2500,37 @@ a:only-of-type > .remove {
 .gal-return-original {
   display: none;
 }
+.gal-thumb-external {
+  height: 100px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(100, 100, 100, 0.3) !important;
+  border: 2px dashed rgba(150, 150, 150, 0.5);
+  line-height: normal !important;
+}
+.gal-thumb-external:hover {
+  background: rgba(120, 120, 120, 0.4) !important;
+  border-color: rgba(180, 180, 180, 0.7);
+}
+.gal-thumb-external-icon {
+  text-align: center;
+  font-size: 48px;
+  line-height: 1;
+  position: relative;
+}
+.gal-thumb-external-label {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
 .gal-thumb-link-indicator {
   position: absolute;
   bottom: 0.5rem;
