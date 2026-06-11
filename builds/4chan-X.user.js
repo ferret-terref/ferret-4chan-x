@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         4chan X Ferret Edition
-// @version      1.14.24.1
+// @version      1.14.24.2
 // @minGMVer     1.14
 // @minFFVer     26
 // @namespace    4chan-X
@@ -211,7 +211,7 @@ docSet = function() {
 };
 
 g = {
-  VERSION:   '1.14.24.1',
+  VERSION:   '1.14.24.2',
   NAMESPACE: '4chan X Ferret Edition.',
   sites:     Object.create(null),
   boards:    Object.create(null)
