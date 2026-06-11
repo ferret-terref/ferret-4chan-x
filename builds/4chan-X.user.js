@@ -3566,6 +3566,7 @@ a:only-of-type > .remove {\n\
   padding: 3px;\n\
   line-height: 0;\n\
   transition: background .2s linear;\n\
+  position: relative;\n\
 }\n\
 .gal-highlight {\n\
   background: rgba(0, 190, 255,.8);\n\
@@ -3799,8 +3800,8 @@ a:only-of-type > .remove {\n\
 }\n\
 .gal-thumb-link-indicator {\n\
   position: absolute;\n\
-  top: 2px;\n\
-  right: 2px;\n\
+  bottom: 0.5rem;\n\
+  right: 0.5rem;\n\
   font-size: 16px;\n\
   line-height: 1;\n\
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.5);\n\

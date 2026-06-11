@@ -2268,6 +2268,7 @@ a:only-of-type > .remove {
   padding: 3px;
   line-height: 0;
   transition: background .2s linear;
+  position: relative;
 }
 .gal-highlight {
   background: rgba(0, 190, 255,.8);
@@ -2501,8 +2502,8 @@ a:only-of-type > .remove {
 }
 .gal-thumb-link-indicator {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  bottom: 0.5rem;
+  right: 0.5rem;
   font-size: 16px;
   line-height: 1;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.5);
