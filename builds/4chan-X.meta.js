@@ -107,7 +107,7 @@
 // @grant        GM.openInTab
 // @grant        GM.xmlHttpRequest
 // @run-at       document-start
-// @updateURL    https://www.4chan-x.net/builds/4chan-X.meta.js
-// @downloadURL  https://www.4chan-x.net/builds/4chan-X.user.js
+// @updateURL    https://github.com/ferret-terref/ferret-4chan-x/blob/master/builds/4chan-X.meta.js
+// @downloadURL  https://github.com/ferret-terref/ferret-4chan-x/blob/master/builds/4chan-X.user.js
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAACVBMVEUAAGcAAABmzDNZt9VtAAAAAXRSTlMAQObYZgAAAF5JREFUeNrtkTESABAQxPD/R6tsE2dUGYUtFJvLDKf93KevHJAjpBorAQWSBIKqFASC4G0pCAkm4GfaEvgYXl0T6HBaE97f0vmnfYHbZOMLZCx9ISdKWwjOWZSC8GYm4SUGwfYgqI4AAAAASUVORK5CYII=
 // ==/UserScript==
