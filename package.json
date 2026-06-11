@@ -6,7 +6,7 @@
     "path": "4chan-x",
     "fork": "ferret-terref",
     "page": "https://www.4chan-x.net/",
-    "downloads": "https://www.4chan-x.net/builds/",
+    "downloads": "https://raw.githubusercontent.com/ferret-terref/ferret-4chan-x/refs/heads/master/builds/",
     "oldVersions": "https://raw.githubusercontent.com/ferret-terref/ferret-4chan-x/",
     "faq": "https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions",
     "captchaFAQ": "https://github.com/ferret-terref/ferret-4chan-x/wiki/Captcha-FAQ",
