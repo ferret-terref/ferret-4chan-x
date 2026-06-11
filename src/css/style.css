@@ -2412,10 +2412,102 @@ a:only-of-type > .remove {
   flex-direction: column;
   -webkit-align-items: flex-end;
   align-items: flex-end;
-
 }
 :root:not(.show-sauce) .gal-sauce {
   display: none;
+}
+.gal-comment-wrapper {
+  background: rgba(0,0,0,0.6) !important;
+  border-radius: 3px;
+  padding: 1px 5px 2px 5px;
+  margin-top: 3px;
+  max-width: 500px;
+}
+.gal-comment-toggle {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+.gal-comment-toggle:hover {
+  color: rgb(95, 95, 101) !important;
+}
+.gal-comment {
+  white-space: pre-wrap;
+  color: #ffffff !important;
+  display: none;
+  margin-top: 3px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.gal-comment.expanded {
+  display: block;
+}
+.gal-comment a {
+  color: #88ccff !important;
+  text-decoration: underline !important;
+}
+.gal-comment a:hover {
+  color: #aaddff !important;
+}
+.gal-external-images {
+  background: rgba(0,0,0,0.6) !important;
+  border-radius: 3px;
+  padding: 2px 2px;
+  margin-top: 3px;
+}
+.gal-external-title {
+  display: inline;
+  color: #ffffff !important;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.gal-external-preview {
+  display: inline-block;
+  background: rgba(80, 120, 200, 0.8) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.gal-external-preview:hover {
+  background: rgba(100, 150, 230, 0.9) !important;
+}
+.gal-external-preview.gal-external-active {
+  background: rgba(0, 200, 100, 0.9) !important;
+  box-shadow: 0 0 6px rgba(0, 255, 150, 0.8);
+}
+.gal-external-preview.gal-external-active:hover {
+  background: rgba(0, 220, 120, 1) !important;
+}
+.gal-og-button {
+  background: rgba(200, 100, 80, 0.8) !important;
+}
+.gal-og-button:hover {
+  background: rgba(230, 120, 100, 0.9) !important;
+}
+.gal-og-button.gal-external-active {
+  background: rgba(0, 200, 100, 0.9) !important;
+  box-shadow: 0 0 6px rgba(0, 255, 150, 0.8);
+}
+.gal-og-button.gal-external-active:hover {
+  background: rgba(0, 220, 120, 1) !important;
+}
+.gal-return-original {
+  display: none;
+}
+.gal-thumb-link-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 16px;
+  line-height: 1;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 1;
 }
 .gal-name,
 .gal-count,

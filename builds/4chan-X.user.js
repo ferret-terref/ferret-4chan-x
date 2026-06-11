@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         4chan X
+// @name         4chan X Ferret Edition
 // @version      1.14.24.1
 // @minGMVer     1.14
 // @minFFVer     26
 // @namespace    4chan-X
-// @description  4chan X is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/ccd0/4chan-x/blob/master/LICENSE 
+// @description  4chan X (Ferret Edition) is a script that adds various features to anonymous imageboards.
+// @license      MIT; https://github.com/ferret-terref/ferret-4chan-x/blob/master/LICENSE 
 // @include      http://boards.4chan.org/*
 // @include      https://boards.4chan.org/*
 // @include      http://sys.4chan.org/*
@@ -212,7 +212,7 @@ docSet = function() {
 
 g = {
   VERSION:   '1.14.24.1',
-  NAMESPACE: '4chan X.',
+  NAMESPACE: '4chan X Ferret Edition.',
   sites:     Object.create(null),
   boards:    Object.create(null)
 };
@@ -253,14 +253,14 @@ Config = (function() {
       'Miscellaneous': {
         'Redirect to HTTPS': [true, 'Redirect to the HTTPS version of 4chan.'],
         'JSON Index': [true, 'Replace the original board index with one supporting searching, sorting, infinite scrolling, and a catalog mode.'],
-        'Use 4chan X Catalog': [true, 'Link to 4chan X\'s catalog instead of the native 4chan one.', 1],
+        'Use 4chan X Ferret Edition Catalog': [true, 'Link to 4chan X Ferret Edition\'s catalog instead of the native 4chan one.', 1],
         'Index Refresh Notifications': [false, 'Show a notice at the top of the page when the index is refreshed.', 1],
         'Follow Cursor': [true, 'Image Hover and Quote Preview move with the mouse cursor.'],
-        'Open Threads in New Tab': [false, 'Make links to threads in the index / 4chan X catalog open in a new tab.'],
+        'Open Threads in New Tab': [false, 'Make links to threads in the index / 4chan X Ferret Edition catalog open in a new tab.'],
         'External Catalog': [false, 'Link to external catalog instead of the internal one.'],
         'Catalog Links': [false, 'Add toggle link in header menu to turn Navigation links into links to each board\'s catalog.'],
         'Announcement Hiding': [true, 'Add button to hide 4chan announcements.'],
-        'Desktop Notifications': [true, 'Enables desktop notifications across various 4chan X features.'],
+        'Desktop Notifications': [true, 'Enables desktop notifications across various 4chan X Ferret Edition features.'],
         '404 Redirect': [true, 'Redirect dead threads and images to the archives.'],
         'Archive Report': [true, 'Enable reporting posts to supported archives.'],
         'Exempt Archives from Encryption': [true, 'Permit loading content from, and warningless redirects to, HTTP-only archives from HTTPS pages.'],
@@ -276,7 +276,7 @@ Config = (function() {
         'Unique ID and Capcode Navigation': [false, 'Add buttons to navigate to posts having the same unique ID or capcode.'],
         'Custom Board Titles': [true, 'Allow editing of the board title and subtitle by ctrl/\u2318+clicking them.'],
         'Persistent Custom Board Titles': [false, 'Force custom board titles to be persistent, even if the board titles are updated.', 1],
-        'Show Updated Notifications': [true, 'Show notifications when 4chan X is successfully updated.'],
+        'Show Updated Notifications': [true, 'Show notifications when 4chan X Ferret Edition is successfully updated.'],
         'Color User IDs': [true, 'Assign unique colors to user IDs on boards that use them'],
         'Count Posts by ID': [true, 'Display number of posts in the thread when hovering over an ID.'],
         'Remove Spoilers': [false, 'Remove all spoilers in text.'],
@@ -284,7 +284,7 @@ Config = (function() {
         'Normalize URL': [true, 'Rewrite the URL of the current page, removing slugs and excess slashes, and changing /res/ to /thread/.'],
         'Work around CORB Bug': [true, 'Leave this checked until your garbage browser is fixed.'],
         'Disable Autoplaying Sounds': [false, 'Prevent sounds on the page from autoplaying.'],
-        'Disable Native Extension': [true, '4chan X is NOT designed to work with the native extension.'],
+        'Disable Native Extension': [true, '4chan X Ferret Edition is NOT designed to work with the native extension.'],
         'Enable Native Flash Embedding': [true, 'Activate the native extension\'s Flash embedding if the native extension is disabled.']
       },
       'Linkification': {
@@ -309,7 +309,7 @@ Config = (function() {
       'Images and Videos': {
         'Image Expansion': [true, 'Expand images / videos.'],
         'Image Hover': [true, 'Show full image / video on mouseover.'],
-        'Image Hover in Catalog': [true, 'Show full image / video on mouseover in 4chan X catalog.'],
+        'Image Hover in Catalog': [true, 'Show full image / video on mouseover in 4chan X Ferret Edition catalog.'],
         'Gallery': [true, 'Adds a simple and cute image gallery. Has more options in the gallery menu.'],
         'Fullscreen Gallery': [false, 'Open gallery in fullscreen mode.', 1],
         'PDF in Gallery': [false, 'Show PDF files in gallery.', 1],
@@ -330,7 +330,7 @@ Config = (function() {
         'Allow Sound': [true, 'Open videos with the sound unmuted.'],
         'Mouse Wheel Volume': [true, 'Adjust volume of videos with the mouse wheel over the thumbnail/filename/gallery.'],
         'Loop in New Tab': [true, 'Loop videos opened in their own tabs.'],
-        'Volume in New Tab': [true, 'Apply 4chan X mute and volume settings to videos opened in their own tabs.']
+        'Volume in New Tab': [true, 'Apply 4chan X Ferret Edition mute and volume settings to videos opened in their own tabs.']
       },
       'Menu': {
         'Menu': [true, 'Add a drop-down menu to posts.'],
@@ -482,7 +482,7 @@ Config = (function() {
       archiveAutoUpdate: true
     },
     externalCatalogURLs: "//catalog.neet.tv/%board/;boards:4chan.org:3,a,adv,an,asp,biz,c,cgl,ck,cm,co,diy,f,fa,fit,g,gd,his,i,int,jp,k,lgbt,lit,m,mlp,mu,n,news,o,out,p,po,pol,s4s,sci,sp,tg,toy,trv,tv,v,vg,vip,vp,vr,w,wg,wsg,wsr,x",
-    boardnav: "[ toggle-all ]\n[current-index-text:\"Index\"\ncurrent-catalog-text:\"Catalog\"\ncurrent-expired-text:\"Expired\"\ncurrent-archive-text:\"Archive\"]\n[external-text:\"FAQ\",\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions\"]",
+    boardnav: "[ toggle-all ]\n[current-index-text:\"Index\"\ncurrent-catalog-text:\"Catalog\"\ncurrent-expired-text:\"Expired\"\ncurrent-archive-text:\"Archive\"]\n[external-text:\"FAQ\",\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions\"]",
     QR: {
       'QR.personas': "#options:\"sage\";boards:jp;always",
       sjisPreview: false
@@ -3713,6 +3713,99 @@ a:only-of-type > .remove {\n\
 }\n\
 :root:not(.show-sauce) .gal-sauce {\n\
   display: none;\n\
+}\n\
+.gal-comment-wrapper {\n\
+  background: rgba(0,0,0,0.6) !important;\n\
+  border-radius: 3px;\n\
+  padding: 1px 5px 2px 5px;\n\
+  margin-top: 3px;\n\
+  max-width: 500px;\n\
+}\n\
+.gal-comment-toggle {\n\
+  color: #ffffff !important;\n\
+  text-decoration: none !important;\n\
+  cursor: pointer;\n\
+  font-weight: bold;\n\
+}\n\
+.gal-comment-toggle:hover {\n\
+  color: rgb(95, 95, 101) !important;\n\
+}\n\
+.gal-comment {\n\
+  white-space: pre-wrap;\n\
+  color: #ffffff !important;\n\
+  display: none;\n\
+  margin-top: 3px;\n\
+  max-height: 150px;\n\
+  overflow-y: auto;\n\
+}\n\
+.gal-comment.expanded {\n\
+  display: block;\n\
+}\n\
+.gal-comment a {\n\
+  color: #88ccff !important;\n\
+  text-decoration: underline !important;\n\
+}\n\
+.gal-comment a:hover {\n\
+  color: #aaddff !important;\n\
+}\n\
+.gal-external-images {\n\
+  background: rgba(0,0,0,0.6) !important;\n\
+  border-radius: 3px;\n\
+  padding: 2px 2px;\n\
+  margin-top: 3px;\n\
+}\n\
+.gal-external-title {\n\
+  display: inline;\n\
+  color: #ffffff !important;\n\
+  font-weight: bold;\n\
+  margin-right: 5px;\n\
+}\n\
+.gal-external-preview {\n\
+  display: inline-block;\n\
+  background: rgba(80, 120, 200, 0.8) !important;\n\
+  color: #ffffff !important;\n\
+  text-decoration: none !important;\n\
+  border-radius: 3px;\n\
+  padding: 2px 8px;\n\
+  margin: 2px;\n\
+  font-weight: bold;\n\
+  transition: background 0.2s;\n\
+}\n\
+.gal-external-preview:hover {\n\
+  background: rgba(100, 150, 230, 0.9) !important;\n\
+}\n\
+.gal-external-preview.gal-external-active {\n\
+  background: rgba(0, 200, 100, 0.9) !important;\n\
+  box-shadow: 0 0 6px rgba(0, 255, 150, 0.8);\n\
+}\n\
+.gal-external-preview.gal-external-active:hover {\n\
+  background: rgba(0, 220, 120, 1) !important;\n\
+}\n\
+.gal-og-button {\n\
+  background: rgba(200, 100, 80, 0.8) !important;\n\
+}\n\
+.gal-og-button:hover {\n\
+  background: rgba(230, 120, 100, 0.9) !important;\n\
+}\n\
+.gal-og-button.gal-external-active {\n\
+  background: rgba(0, 200, 100, 0.9) !important;\n\
+  box-shadow: 0 0 6px rgba(0, 255, 150, 0.8);\n\
+}\n\
+.gal-og-button.gal-external-active:hover {\n\
+  background: rgba(0, 220, 120, 1) !important;\n\
+}\n\
+.gal-return-original {\n\
+  display: none;\n\
+}\n\
+.gal-thumb-link-indicator {\n\
+  position: absolute;\n\
+  top: 2px;\n\
+  right: 2px;\n\
+  font-size: 16px;\n\
+  line-height: 1;\n\
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.5);\n\
+  pointer-events: none;\n\
+  z-index: 1;\n\
 }\n\
 .gal-name,\n\
 .gal-count,\n\
@@ -11304,7 +11397,7 @@ Header = (function() {
         case 'denied':
           return;
       }
-      el = $.el('span', {innerHTML: "4chan X needs your permission to show desktop notifications. [<a href=\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions#why-is-4chan-x-asking-for-permission-to-show-desktop-notifications\" target=\"_blank\">FAQ</a>]<br><button>Authorize</button> or <button>Disable</button>"});
+      el = $.el('span', {innerHTML: "4chan X Ferret Edition needs your permission to show desktop notifications. [<a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions#why-is-4chan-x-asking-for-permission-to-show-desktop-notifications\" target=\"_blank\">FAQ</a>]<br><button>Authorize</button> or <button>Disable</button>"});
       ref = $$('button', el), authorize = ref[0], disable = ref[1];
       $.on(authorize, 'click', function() {
         return Notification.requestPermission(function(status) {
@@ -12717,7 +12810,7 @@ Settings = (function() {
       link = $.el('a', {
         className: 'settings-link fa fa-wrench',
         textContent: 'Settings',
-        title: '4chan X Settings',
+        title: '4chan X Ferret Edition Settings',
         href: 'javascript:;'
       });
       $.on(link, 'click', Settings.open);
@@ -12770,7 +12863,7 @@ Settings = (function() {
       $.event('CloseMenu');
       Settings.dialog = dialog = $.el('div', {
         id: 'overlay'
-      }, {innerHTML: "<div id=\"fourchanx-settings\" class=\"dialog\"><nav><div class=\"sections-list\"></div><p class=\"imp-exp-result warning\"></p><div class=\"credits\"><a class=\"export\">Export</a>&nbsp|&nbsp<a class=\"import\">Import</a>&nbsp|&nbsp<a class=\"reset\">Reset Settings</a>&nbsp|&nbsp<input type=\"file\" hidden><a href=\"https://www.4chan-x.net/\" target=\"_blank\">4chan X</a>&nbsp|&nbsp<a href=\"https://github.com/ccd0/4chan-x/blob/master/CHANGELOG.md\" target=\"_blank\">" + E(g.VERSION) + "</a>&nbsp|&nbsp<a href=\"https://github.com/ccd0/4chan-x/issues\" target=\"_blank\">Issues</a>&nbsp|&nbsp<a href=\"javascript:;\" class=\"close fa fa-times\" title=\"Close\"></a></div></nav><div class=\"section-container\"><section></section></div></div>"});
+      }, {innerHTML: "<div id=\"fourchanx-settings\" class=\"dialog\"><nav><div class=\"sections-list\"></div><p class=\"imp-exp-result warning\"></p><div class=\"credits\"><a class=\"export\">Export</a>&nbsp|&nbsp<a class=\"import\">Import</a>&nbsp|&nbsp<a class=\"reset\">Reset Settings</a>&nbsp|&nbsp<input type=\"file\" hidden><a href=\"https://www.4chan-x.net/\" target=\"_blank\">4chan X Ferret Edition</a>&nbsp|&nbsp<a href=\"https://github.com/ferret-terref/ferret-4chan-x/blob/master/CHANGELOG.md\" target=\"_blank\">" + E(g.VERSION) + "</a>&nbsp|&nbsp<a href=\"https://github.com/ferret-terref/ferret-4chan-x/issues\" target=\"_blank\">Issues</a>&nbsp|&nbsp<a href=\"javascript:;\" class=\"close fa fa-times\" title=\"Close\"></a></div></nav><div class=\"section-container\"><section></section></div></div>"});
       $.on($('.export', dialog), 'click', Settings["export"]);
       $.on($('.import', dialog), 'click', Settings["import"]);
       $.on($('.reset', dialog), 'click', Settings.reset);
@@ -12847,7 +12940,7 @@ Settings = (function() {
         if ($.cantSync) {
           why = $.cantSet ? 'save your settings' : 'synchronize settings between tabs';
           return cb($.el('li', {
-            textContent: "4chan X needs local storage to " + why + ".\nEnable it on boards." + (location.hostname.split('.')[1]) + ".org in your browser's privacy settings (may be listed as part of \"local data\" or \"cookies\")."
+            textContent: "4chan X Ferret Edition needs local storage to " + why + ".\nEnable it on boards." + (location.hostname.split('.')[1]) + ".org in your browser's privacy settings (may be listed as part of \"local data\" or \"cookies\")."
           }));
         }
       },
@@ -12920,7 +13013,7 @@ Settings = (function() {
         fs = $.el('fieldset', {innerHTML: "<legend>" + E(keyFS) + "</legend>"});
         addCheckboxes(fs, obj);
         if (keyFS === 'Posting and Captchas') {
-          $.add(fs, $.el('p', {innerHTML: "For more info on captcha options and issues, see the <a href=\"https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ\" target=\"_blank\">captcha FAQ</a>."}));
+          $.add(fs, $.el('p', {innerHTML: "For more info on captcha options and issues, see the <a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Captcha-FAQ\" target=\"_blank\">captcha FAQ</a>."}));
         }
         $.add(section, fs);
       }
@@ -13027,7 +13120,7 @@ Settings = (function() {
       });
       url = URL.createObjectURL(blob);
       a = $.el('a', {
-        download: "4chan X v" + g.VERSION + "-" + data.date + ".json",
+        download: "4chan X Ferret Edition v" + g.VERSION + "-" + data.date + ".json",
         href: url
       });
       p = $('.imp-exp-result', Settings.dialog);
@@ -13496,7 +13589,7 @@ Settings = (function() {
       }
       if (compareString < '00001.00014.00012.00008') {
         if (data['boardnav'] == null) {
-          set('boardnav', "[ toggle-all ]\na-replace\nc-replace\ng-replace\nk-replace\nv-replace\nvg-replace\nvr-replace\nck-replace\nco-replace\nfit-replace\njp-replace\nmu-replace\nsp-replace\ntv-replace\nvp-replace\n[external-text:\"FAQ\",\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions\"]");
+          set('boardnav', "[ toggle-all ]\na-replace\nc-replace\ng-replace\nk-replace\nv-replace\nvg-replace\nvr-replace\nck-replace\nco-replace\nfit-replace\njp-replace\nmu-replace\nsp-replace\ntv-replace\nvp-replace\n[external-text:\"FAQ\",\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions\"]");
         }
       }
       if (compareString < '00001.00014.00016.00001') {
@@ -13602,7 +13695,7 @@ Settings = (function() {
     },
     advanced: function(section) {
       var applyCSS, boardSelect, customCSS, event, input, inputs, interval, items, itemsArchive, j, k, l, len, len1, len2, len3, listImageHost, m, name, ref, ref1, ref2, ref3, ref4, table, textContent, updateArchives, warning;
-      $.extend(section, {innerHTML: "<fieldset><legend>Archives</legend><div class=\"warning\" data-feature=\"404 Redirect\"><code>404 Redirect</code> is disabled.</div><select id=\"archive-board-select\"></select><table id=\"archive-table\"><thead><th>Thread redirection</th><th>Post fetching</th><th>File redirection</th></thead><tbody></tbody></table><br><div><b>Archive Lists</b>: Each line below should be an archive list in <a href=\"https://github.com/4chenz/archives.json/blob/gh-pages/CONTRIBUTING.md\" target=\"_blank\">this format</a> or a URL to load an archive list from.<br>Archive properties can be overriden by another item with the same <code>uid</code> (or if absent, its <code>name</code>).</div><textarea hidden name=\"archiveLists\" class=\"field\" spellcheck=\"false\"></textarea><button id=\"update-archives\">Update now</button> Last updated: <time id=\"lastarchivecheck\"></time> <label><input type=\"checkbox\" name=\"archiveAutoUpdate\"> Auto-update</label></fieldset><fieldset><legend>External Catalog</legend><div class=\"warning\" data-feature=\"External Catalog\"><code>External Catalog</code> is disabled. This will be used only as a fallback.</div><div>URLs of external catalog sites, where <code>%board</code> is to be replaced by the board name.<br>Each URL should be followed by <code>;boards:</code> and optionally <code>;exclude:</code> and a list of supported/excluded boards in the format explained in the Filter guide.</div><textarea hidden name=\"externalCatalogURLs\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Override 4chan Image Host</legend><div>Change 4chan image links to this domain. Leave blank for no change.</div><div><input name=\"fourchanImageHost\" class=\"field\" spellcheck=\"false\" list=\"list-fourchanImageHost\"></div><datalist id=\"list-fourchanImageHost\"></datalist></fieldset><fieldset><legend>Captcha Language</legend><div>Choose from <a href=\"https://developers.google.com/recaptcha/docs/language\" target=\"_blank\">list of language codes</a>. Leave blank to autoselect.</div><div><input name=\"captchaLanguage\" class=\"field\" spellcheck=\"false\"></div></fieldset><fieldset><legend>Custom Board Navigation</legend><div><textarea hidden name=\"boardnav\" class=\"field\" spellcheck=\"false\"></textarea></div><span class=\"note\">New lines will be converted into spaces.</span><br><br><div class=\"note\">In the following examples for /g/, <code>g</code> can be changed to a different board ID (<code>a</code>, <code>b</code>, etc...), the current board (<code>current</code>), or the Twitter link (<code>@</code>).</div><div>Board link: <code>g</code></div><div>Archive link: <code>g-archive</code></div><div>Internal archive link: <code>g-expired</code></div><div>Title link: <code>g-title</code></div><div>Board link (Replace with title when on that board): <code>g-replace</code></div><div>Full text link: <code>g-full</code></div><div>Custom text link: <code>g-text:&quot;Install Gentoo&quot;</code></div><div>Index-only link: <code>g-index</code></div><div>Catalog-only link: <code>g-catalog</code></div><div>Index mode: <code>g-mode:&quot;infinite scrolling&quot;</code></div><div>Index sort: <code>g-sort:&quot;creation date rev&quot;</code></div><div>External link: <code>external-text:&quot;Google&quot;,&quot;http://www.google.com&quot;</code></div><div>Open in new tab: <code>g-nt</code></div><div>Combinations are possible: <code>g-index-text:&quot;Technology Index&quot;</code></div><div>Full board list toggle: <code>toggle-all</code></div><br><div class=\"note\"><code>[ toggle-all ] [current-title] [g-title / a-title / jp-title] [x / wsg / h] [t-text:&quot;Piracy&quot;]</code><br>will give you<br><code>[ + ] [Technology] [Technology / Anime & Manga / Otaku Culture] [x / wsg / h] [Piracy]</code><br>if you are on /g/.</div></fieldset><fieldset><legend>Time Formatting <span class=\"warning\" data-feature=\"Time Formatting\">is disabled.</span></legend><div><input name=\"time\" class=\"field\" spellcheck=\"false\">: <span class=\"time-preview\"></span></div><div>Supported <a href=\"http://man7.org/linux/man-pages/man1/date.1.html\" target=\"_blank\">format specifiers</a>:</div><div>Day: <code>%a</code>, <code>%A</code>, <code>%d</code>, <code>%e</code></div><div>Month: <code>%m</code>, <code>%b</code>, <code>%B</code></div><div>Year: <code>%y</code>, <code>%Y</code></div><div>Hour: <code>%k</code>, <code>%H</code>, <code>%l</code>, <code>%I</code>, <code>%p</code>, <code>%P</code></div><div>Minute: <code>%M</code></div><div>Second: <code>%S</code></div><div>Literal <code>%</code>: <code>%%</code></div><div><a href=\"https://www.w3.org/International/articles/language-tags/\" target=\"_blank\">Language tag</a>: <input name=\"timeLocale\" class=\"field\" spellcheck=\"false\"></div></fieldset><fieldset><legend>Quote Backlinks formatting <span class=\"warning\" data-feature=\"Quote Backlinks\">is disabled.</span></legend><div><input name=\"backlink\" class=\"field\" spellcheck=\"false\">: <span class=\"backlink-preview\"></span></div></fieldset><fieldset><legend>Default pasted content filename</legend><div><input name=\"pastedname\" class=\"field\" spellcheck=\"false\">.png</div></fieldset><fieldset><legend>File Info Formatting <span class=\"warning\" data-feature=\"File Info Formatting\">is disabled.</span></legend><div><input name=\"fileInfo\" class=\"field\" spellcheck=\"false\">: <span class=\"file-info file-info-preview\"></span></div><div>Link: <code>%l</code> (truncated), <code>%L</code> (untruncated), <code>%T</code> (4chan filename)</div><div>Filename: <code>%n</code> (truncated), <code>%N</code> (untruncated), <code>%t</code> (4chan filename)</div><div>Download button: <code>%d</code></div><div>Quick filter MD5: <code>%f</code></div><div>Spoiler indicator: <code>%p</code></div><div>Size: <code>%B</code> (Bytes), <code>%K</code> (KB), <code>%M</code> (MB), <code>%s</code> (4chan default)</div><div>Resolution: <code>%r</code> (Displays &#039;PDF&#039; for PDF files)</div><div>Tag: <code>%g</code><div>Literal <code>%</code>: <code>%%</code></div></fieldset><fieldset><legend>Quick Reply Personas</legend><textarea hidden class=\"personafield field\" name=\"QR.personas\" spellcheck=\"false\"></textarea><p>One item per line.<br>Items will be added in the relevant input&#039;s auto-completion list.<br>Password items will always be used, since there is no password input.<br>Lines starting with a <code>#</code> will be ignored.</p><ul>You can use these settings with each item, separate them with semicolons:<li>Possible items are: <code>name</code>, <code>options</code> (or equivalently <code>email</code>), <code>subject</code> and <code>password</code>.</li><li>Wrap values of items with quotes, like this: <code>options:&quot;sage&quot;</code>.</li><li>Force values as defaults with the <code>always</code> keyword, for example: <code>options:&quot;sage&quot;;always</code>.</li><li>Select specific boards for an item, separated with commas, for example: <code>options:&quot;sage&quot;;boards:jp;always</code>.</li></ul></fieldset><fieldset><legend>Unread Favicon <span class=\"warning\" data-feature=\"Unread Favicon\">is disabled.</span></legend><select name=\"favicon\"><option value=\"ferongr\">ferongr</option><option value=\"xat-\">xat-</option><option value=\"4chanJS\">4chanJS</option><option value=\"Mayhem\">Mayhem</option><option value=\"Original\">Original</option><option value=\"Metro\">Metro</option></select><span class=\"favicon-preview\"></span></fieldset><fieldset><legend>Thread Updater <span class=\"warning\" data-feature=\"Thread Updater\">is disabled.</span></legend><div>Interval: <input type=\"number\" name=\"Interval\" class=\"field\" min=\"1\"> seconds</div></fieldset><fieldset><legend>Custom Cooldown Time</legend><div>Seconds: <input type=\"number\" name=\"customCooldown\" class=\"field\" min=\"0\"></div></fieldset><fieldset><legend><label><input type=\"checkbox\" name=\"Custom CSS\"> Custom CSS</label></legend><div>For more information about customizing 4chan X&#039;s CSS, see the <a href=\"https://github.com/ccd0/4chan-x/wiki/Styling-Guide\" target=\"_blank\">styling guide</a>.</div><button id=\"apply-css\">Apply CSS</button><textarea hidden name=\"usercss\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Javascript Whitelist</legend><div>Sources from which Javascript is allowed to be loaded by <a href=\"http://content-security-policy.com/#source_list\" target=\"_blank\">Content Security Policy</a>.<br>Lines starting with a <code>#</code> will be ignored. Remove or comment out all lines to allow everything.</div><textarea hidden name=\"jsWhitelist\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Known Banners</legend><div>List of known banners, used for click-to-change feature.</div><textarea hidden name=\"knownBanners\" class=\"field\" spellcheck=\"false\"></textarea></fieldset>"});
+      $.extend(section, {innerHTML: "<fieldset><legend>Archives</legend><div class=\"warning\" data-feature=\"404 Redirect\"><code>404 Redirect</code> is disabled.</div><select id=\"archive-board-select\"></select><table id=\"archive-table\"><thead><th>Thread redirection</th><th>Post fetching</th><th>File redirection</th></thead><tbody></tbody></table><br><div><b>Archive Lists</b>: Each line below should be an archive list in <a href=\"https://github.com/4chenz/archives.json/blob/gh-pages/CONTRIBUTING.md\" target=\"_blank\">this format</a> or a URL to load an archive list from.<br>Archive properties can be overriden by another item with the same <code>uid</code> (or if absent, its <code>name</code>).</div><textarea hidden name=\"archiveLists\" class=\"field\" spellcheck=\"false\"></textarea><button id=\"update-archives\">Update now</button> Last updated: <time id=\"lastarchivecheck\"></time> <label><input type=\"checkbox\" name=\"archiveAutoUpdate\"> Auto-update</label></fieldset><fieldset><legend>External Catalog</legend><div class=\"warning\" data-feature=\"External Catalog\"><code>External Catalog</code> is disabled. This will be used only as a fallback.</div><div>URLs of external catalog sites, where <code>%board</code> is to be replaced by the board name.<br>Each URL should be followed by <code>;boards:</code> and optionally <code>;exclude:</code> and a list of supported/excluded boards in the format explained in the Filter guide.</div><textarea hidden name=\"externalCatalogURLs\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Override 4chan Image Host</legend><div>Change 4chan image links to this domain. Leave blank for no change.</div><div><input name=\"fourchanImageHost\" class=\"field\" spellcheck=\"false\" list=\"list-fourchanImageHost\"></div><datalist id=\"list-fourchanImageHost\"></datalist></fieldset><fieldset><legend>Captcha Language</legend><div>Choose from <a href=\"https://developers.google.com/recaptcha/docs/language\" target=\"_blank\">list of language codes</a>. Leave blank to autoselect.</div><div><input name=\"captchaLanguage\" class=\"field\" spellcheck=\"false\"></div></fieldset><fieldset><legend>Custom Board Navigation</legend><div><textarea hidden name=\"boardnav\" class=\"field\" spellcheck=\"false\"></textarea></div><span class=\"note\">New lines will be converted into spaces.</span><br><br><div class=\"note\">In the following examples for /g/, <code>g</code> can be changed to a different board ID (<code>a</code>, <code>b</code>, etc...), the current board (<code>current</code>), or the Twitter link (<code>@</code>).</div><div>Board link: <code>g</code></div><div>Archive link: <code>g-archive</code></div><div>Internal archive link: <code>g-expired</code></div><div>Title link: <code>g-title</code></div><div>Board link (Replace with title when on that board): <code>g-replace</code></div><div>Full text link: <code>g-full</code></div><div>Custom text link: <code>g-text:&quot;Install Gentoo&quot;</code></div><div>Index-only link: <code>g-index</code></div><div>Catalog-only link: <code>g-catalog</code></div><div>Index mode: <code>g-mode:&quot;infinite scrolling&quot;</code></div><div>Index sort: <code>g-sort:&quot;creation date rev&quot;</code></div><div>External link: <code>external-text:&quot;Google&quot;,&quot;http://www.google.com&quot;</code></div><div>Open in new tab: <code>g-nt</code></div><div>Combinations are possible: <code>g-index-text:&quot;Technology Index&quot;</code></div><div>Full board list toggle: <code>toggle-all</code></div><br><div class=\"note\"><code>[ toggle-all ] [current-title] [g-title / a-title / jp-title] [x / wsg / h] [t-text:&quot;Piracy&quot;]</code><br>will give you<br><code>[ + ] [Technology] [Technology / Anime & Manga / Otaku Culture] [x / wsg / h] [Piracy]</code><br>if you are on /g/.</div></fieldset><fieldset><legend>Time Formatting <span class=\"warning\" data-feature=\"Time Formatting\">is disabled.</span></legend><div><input name=\"time\" class=\"field\" spellcheck=\"false\">: <span class=\"time-preview\"></span></div><div>Supported <a href=\"http://man7.org/linux/man-pages/man1/date.1.html\" target=\"_blank\">format specifiers</a>:</div><div>Day: <code>%a</code>, <code>%A</code>, <code>%d</code>, <code>%e</code></div><div>Month: <code>%m</code>, <code>%b</code>, <code>%B</code></div><div>Year: <code>%y</code>, <code>%Y</code></div><div>Hour: <code>%k</code>, <code>%H</code>, <code>%l</code>, <code>%I</code>, <code>%p</code>, <code>%P</code></div><div>Minute: <code>%M</code></div><div>Second: <code>%S</code></div><div>Literal <code>%</code>: <code>%%</code></div><div><a href=\"https://www.w3.org/International/articles/language-tags/\" target=\"_blank\">Language tag</a>: <input name=\"timeLocale\" class=\"field\" spellcheck=\"false\"></div></fieldset><fieldset><legend>Quote Backlinks formatting <span class=\"warning\" data-feature=\"Quote Backlinks\">is disabled.</span></legend><div><input name=\"backlink\" class=\"field\" spellcheck=\"false\">: <span class=\"backlink-preview\"></span></div></fieldset><fieldset><legend>Default pasted content filename</legend><div><input name=\"pastedname\" class=\"field\" spellcheck=\"false\">.png</div></fieldset><fieldset><legend>File Info Formatting <span class=\"warning\" data-feature=\"File Info Formatting\">is disabled.</span></legend><div><input name=\"fileInfo\" class=\"field\" spellcheck=\"false\">: <span class=\"file-info file-info-preview\"></span></div><div>Link: <code>%l</code> (truncated), <code>%L</code> (untruncated), <code>%T</code> (4chan filename)</div><div>Filename: <code>%n</code> (truncated), <code>%N</code> (untruncated), <code>%t</code> (4chan filename)</div><div>Download button: <code>%d</code></div><div>Quick filter MD5: <code>%f</code></div><div>Spoiler indicator: <code>%p</code></div><div>Size: <code>%B</code> (Bytes), <code>%K</code> (KB), <code>%M</code> (MB), <code>%s</code> (4chan default)</div><div>Resolution: <code>%r</code> (Displays &#039;PDF&#039; for PDF files)</div><div>Tag: <code>%g</code><div>Literal <code>%</code>: <code>%%</code></div></fieldset><fieldset><legend>Quick Reply Personas</legend><textarea hidden class=\"personafield field\" name=\"QR.personas\" spellcheck=\"false\"></textarea><p>One item per line.<br>Items will be added in the relevant input&#039;s auto-completion list.<br>Password items will always be used, since there is no password input.<br>Lines starting with a <code>#</code> will be ignored.</p><ul>You can use these settings with each item, separate them with semicolons:<li>Possible items are: <code>name</code>, <code>options</code> (or equivalently <code>email</code>), <code>subject</code> and <code>password</code>.</li><li>Wrap values of items with quotes, like this: <code>options:&quot;sage&quot;</code>.</li><li>Force values as defaults with the <code>always</code> keyword, for example: <code>options:&quot;sage&quot;;always</code>.</li><li>Select specific boards for an item, separated with commas, for example: <code>options:&quot;sage&quot;;boards:jp;always</code>.</li></ul></fieldset><fieldset><legend>Unread Favicon <span class=\"warning\" data-feature=\"Unread Favicon\">is disabled.</span></legend><select name=\"favicon\"><option value=\"ferongr\">ferongr</option><option value=\"xat-\">xat-</option><option value=\"4chanJS\">4chanJS</option><option value=\"Mayhem\">Mayhem</option><option value=\"Original\">Original</option><option value=\"Metro\">Metro</option></select><span class=\"favicon-preview\"></span></fieldset><fieldset><legend>Thread Updater <span class=\"warning\" data-feature=\"Thread Updater\">is disabled.</span></legend><div>Interval: <input type=\"number\" name=\"Interval\" class=\"field\" min=\"1\"> seconds</div></fieldset><fieldset><legend>Custom Cooldown Time</legend><div>Seconds: <input type=\"number\" name=\"customCooldown\" class=\"field\" min=\"0\"></div></fieldset><fieldset><legend><label><input type=\"checkbox\" name=\"Custom CSS\"> Custom CSS</label></legend><div>For more information about customizing 4chan X&#039;s CSS, see the <a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Styling-Guide\" target=\"_blank\">styling guide</a>.</div><button id=\"apply-css\">Apply CSS</button><textarea hidden name=\"usercss\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Javascript Whitelist</legend><div>Sources from which Javascript is allowed to be loaded by <a href=\"http://content-security-policy.com/#source_list\" target=\"_blank\">Content Security Policy</a>.<br>Lines starting with a <code>#</code> will be ignored. Remove or comment out all lines to allow everything.</div><textarea hidden name=\"jsWhitelist\" class=\"field\" spellcheck=\"false\"></textarea></fieldset><fieldset><legend>Known Banners</legend><div>List of known banners, used for click-to-change feature.</div><textarea hidden name=\"knownBanners\" class=\"field\" spellcheck=\"false\"></textarea></fieldset>"});
       ref = $$('.warning', section);
       for (j = 0, len = ref.length; j < len; j++) {
         warning = ref[j];
@@ -14509,7 +14602,7 @@ Gallery = (function() {
         className: 'fa fa-picture-o',
         textContent: 'Gallery'
       });
-      $.on(el, 'click', this.cb.toggle);
+      $.on(el, 'click', Gallery.cb.toggle);
       Header.addShortcut('gallery', el, 530);
       return Callbacks.Post.push({
         name: 'Gallery',
@@ -14517,9 +14610,11 @@ Gallery = (function() {
       });
     },
     node: function() {
-      var file, i, len, ref, results;
+      var externalUrls, file, i, len, postText, ref, ref1;
+      if (!this) {
+        return;
+      }
       ref = this.files;
-      results = [];
       for (i = 0, len = ref.length; i < len; i++) {
         file = ref[i];
         if (!file.thumb) {
@@ -14530,15 +14625,23 @@ Gallery = (function() {
           Gallery.nodes.total.textContent = Gallery.images.length;
         }
         if (!(Conf['Image Expansion'] || (g.SITE.software === 'tinyboard' && Main.jsEnabled))) {
-          results.push($.on(file.thumbLink, 'click', Gallery.cb.image));
-        } else {
-          results.push(void 0);
+          $.on(file.thumbLink, 'click', Gallery.cb.image);
         }
       }
-      return results;
+      if (!(Gallery.nodes && typeof this.commentDisplay === 'function')) {
+        return;
+      }
+      if ((((ref1 = this.files) != null ? ref1.length : void 0) || 0) === 0) {
+        postText = this.commentDisplay(true);
+        externalUrls = Gallery.extractImageUrls(postText);
+        if (externalUrls.length > 0) {
+          Gallery.generateExternalOnlyThumb(this, externalUrls);
+          return Gallery.nodes.total.textContent = Gallery.images.length;
+        }
+      }
     },
     build: function(image) {
-      var candidate, cb, dialog, entry, file, i, j, k, key, len, len1, len2, menuButton, nodes, post, postThumb, ref, ref1, ref2, ref3, thumb, value;
+      var allPosts, candidate, cb, commentText, dialog, entry, externalUrls, file, i, j, k, key, l, len, len1, len2, len3, menuButton, nodes, post, postThumb, ref, ref1, ref2, ref3, ref4, thread, thumb, value;
       cb = Gallery.cb;
       if (Conf['Fullscreen Gallery']) {
         $.one(d, 'fullscreenchange mozfullscreenchange webkitfullscreenchange', function() {
@@ -14558,7 +14661,7 @@ Gallery = (function() {
       nodes.el = dialog = $.el('div', {
         id: 'a-gallery'
       });
-      $.extend(dialog, {innerHTML: "<div class=\"gal-viewport\"><span class=\"gal-buttons\"><a href=\"javascript:;\" class=\"gal-start\" title=\"Start slideshow\"><i></i></a><a href=\"javascript:;\" class=\"gal-stop\" title=\"Stop slideshow\"><i></i></a><a href=\"javascript:;\" class=\"menu-button\"><i></i></a><a href=\"javascript:;\" class=\"gal-close\">×</a></span><div class=\"gal-labels\"><span class=\"gal-count\"><span class=\"count\"></span> / <span class=\"total\"></span></span><a class=\"gal-name\" target=\"_blank\"></a><span class=\"gal-sauce\"></span></div><div class=\"gal-prev\"></div><div class=\"gal-image\"><a href=\"javascript:;\"><img></a></div><div class=\"gal-next\"></div></div><div class=\"gal-thumbnails\"></div>"});
+      $.extend(dialog, {innerHTML: "<div class=\"gal-viewport\"><span class=\"gal-buttons\"><a href=\"javascript:;\" class=\"gal-start\" title=\"Start slideshow\"><i></i></a><a href=\"javascript:;\" class=\"gal-stop\" title=\"Stop slideshow\"><i></i></a><a href=\"javascript:;\" class=\"menu-button\"><i></i></a><a href=\"javascript:;\" class=\"gal-close\">×</a></span><div class=\"gal-labels\"><span class=\"gal-count\"><span class=\"count\"></span> / <span class=\"total\"></span></span><span class=\"gal-comment-wrapper\"><a href=\"javascript:;\" class=\"gal-comment-toggle\" title=\"Toggle comment\"></a><span class=\"gal-comment\"></span></span><a class=\"gal-name\" target=\"_blank\"></a><span class=\"gal-external-images\"><span class=\"gal-external-title\">Linked Files: </span></span><span class=\"gal-sauce\"></span></div><div class=\"gal-prev\"></div><div class=\"gal-image\"><a href=\"javascript:;\"><img></a></div><div class=\"gal-next\"></div></div><div class=\"gal-thumbnails\"></div>"});
       ref = {
         buttons: '.gal-buttons',
         frame: '.gal-image',
@@ -14568,7 +14671,10 @@ Gallery = (function() {
         sauce: '.gal-sauce',
         thumbs: '.gal-thumbnails',
         next: '.gal-image a',
-        current: '.gal-image img'
+        current: '.gal-image img',
+        text: '.gal-post-text',
+        externalImages: '.gal-external-images',
+        textVisible: false
       };
       for (key in ref) {
         value = ref[key];
@@ -14601,24 +14707,60 @@ Gallery = (function() {
         $.off(d, 'keydown', Keybinds.keydown);
       }
       $.on(window, 'resize', Gallery.cb.setHeight);
-      ref2 = $$(g.SITE.selectors.file.thumb);
-      for (j = 0, len1 = ref2.length; j < len1; j++) {
-        postThumb = ref2[j];
-        if (!(post = Get.postFromNode(postThumb))) {
+      allPosts = [];
+      if (g.VIEW === 'thread') {
+        if (thread = g.threads.get(g.BOARD + '.' + g.THREADID)) {
+          if (thread.OP) {
+            allPosts.push(thread.OP);
+          }
+          if ((ref2 = thread.posts) != null ? ref2.forEach : void 0) {
+            thread.posts.forEach(function(post) {
+              return allPosts.push(post);
+            });
+          }
+        }
+      } else {
+        ref3 = $$(g.SITE.selectors.file.thumb);
+        for (j = 0, len1 = ref3.length; j < len1; j++) {
+          postThumb = ref3[j];
+          if (post = Get.postFromNode(postThumb)) {
+            allPosts.push(post);
+          }
+        }
+      }
+      console.log('Total posts to process for gallery:', allPosts.length);
+      console.log('Posts:', allPosts);
+      for (k = 0, len2 = allPosts.length; k < len2; k++) {
+        post = allPosts[k];
+        if (!post) {
           continue;
         }
-        ref3 = post.files;
-        for (k = 0, len2 = ref3.length; k < len2; k++) {
-          file = ref3[k];
-          if (!file.thumb) {
+        if (post.isClone || post.isHidden) {
+          continue;
+        }
+        if (post.files && post.files.length > 0) {
+          ref4 = post.files;
+          for (l = 0, len3 = ref4.length; l < len3; l++) {
+            file = ref4[l];
+            if (!file.thumb) {
+              continue;
+            }
+            Gallery.generateThumb(post, file);
+            if (!image && Gallery.fileIDs[post.fullID + "." + file.index]) {
+              candidate = file.thumbLink;
+              if (Header.getTopOf(candidate) + candidate.getBoundingClientRect().height >= 0) {
+                image = candidate;
+              }
+            }
+          }
+        } else {
+          if (typeof post.commentDisplay !== 'function') {
             continue;
           }
-          Gallery.generateThumb(post, file);
-          if (!image && Gallery.fileIDs[post.fullID + "." + file.index]) {
-            candidate = file.thumbLink;
-            if (Header.getTopOf(candidate) + candidate.getBoundingClientRect().height >= 0) {
-              image = candidate;
-            }
+          commentText = post.commentDisplay(true);
+          externalUrls = Gallery.extractImageUrls(commentText);
+          if (externalUrls.length > 0) {
+            Gallery.generateExternalOnlyThumb(post, externalUrls);
           }
         }
       }
@@ -14636,8 +14778,53 @@ Gallery = (function() {
       doc.style.overflow = 'hidden';
       return nodes.total.textContent = Gallery.images.length;
     },
+    extractImageUrls: function(text) {
+      var imageUrlRegex, match, urls;
+      imageUrlRegex = /(https?:\/\/[^\s<>"]+\.(?:jpg|jpeg|png|gif|webp|bmp|mp4|webm)(?:\?[^\s<>"]*)?)(?=[\s<>"]|$)/gi;
+      urls = [];
+      while (match = imageUrlRegex.exec(text)) {
+        urls.push(match[1]);
+      }
+      if (urls.length > 0) {
+        console.log('Extracted image URLs:', urls);
+      }
+      return urls;
+    },
+    generateExternalOnlyThumb: function(post, externalUrls) {
+      var thumb, thumbContainer, thumbLabel;
+      if (post.isClone || post.isHidden) {
+        return;
+      }
+      if (Gallery.fileIDs[post.fullID + ".external"]) {
+        return;
+      }
+      Gallery.fileIDs[post.fullID + ".external"] = true;
+      thumb = $.el('a', {
+        className: 'gal-thumb gal-thumb-external',
+        href: externalUrls[0],
+        target: '_blank',
+        title: externalUrls[0] ? externalUrls[0].split('/').pop() : 'External Image'
+      });
+      thumb.dataset.id = Gallery.images.length;
+      thumb.dataset.post = post.fullID;
+      thumb.dataset.file = 'external';
+      thumb.dataset.externalOnly = 'true';
+      thumbContainer = $.el('div', {
+        className: 'gal-thumb-external-icon',
+        textContent: '🔗'
+      });
+      thumbLabel = $.el('div', {
+        className: 'gal-thumb-external-label',
+        textContent: externalUrls.length
+      });
+      $.add(thumbContainer, thumbLabel);
+      $.add(thumb, thumbContainer);
+      $.on(thumb, 'click', Gallery.cb.open);
+      Gallery.images.push(thumb);
+      return $.add(Gallery.nodes.thumbs, thumb);
+    },
     generateThumb: function(post, file) {
-      var thumb, thumbImg;
+      var commentText, externalUrls, linkIcon, thumb, thumbImg;
       if (post.isClone || post.isHidden) {
         return;
       }
@@ -14660,6 +14847,18 @@ Gallery = (function() {
       thumbImg = file.thumb.cloneNode(false);
       thumbImg.style.cssText = '';
       $.add(thumb, thumbImg);
+      if (typeof post.commentDisplay === 'function') {
+        commentText = post.commentDisplay(true);
+        externalUrls = Gallery.extractImageUrls(commentText);
+        if (externalUrls.length > 0) {
+          linkIcon = $.el('span', {
+            className: 'gal-thumb-link-indicator',
+            textContent: '🔗',
+            title: externalUrls.length + " external image(s)"
+          });
+          $.add(thumb, linkIcon);
+        }
+      }
       $.on(thumb, 'click', Gallery.cb.open);
       Gallery.images.push(thumb);
       return $.add(Gallery.nodes.thumbs, thumb);
@@ -14673,6 +14872,7 @@ Gallery = (function() {
         'ogv': 'video',
         'pdf': 'iframe'
       }, ext) || 'img';
+      console.log("Loading " + elType + " for thumbnail:", thumb, "with extension:", ext);
       file = $.el(elType);
       $.extend(file.dataset, thumb.dataset);
       $.on(file, 'error', errorCB);
@@ -14680,7 +14880,7 @@ Gallery = (function() {
       return file;
     },
     open: function(thumb) {
-      var el, file, i, len, link, newID, node, nodes, oldID, post, ref, ref1, sauces;
+      var commentText, el, externalLinkElements, externalUrls, file, i, index, j, len, link, newID, node, nodes, ogButton, oldID, post, ref, ref1, ref2, sauces, title;
       nodes = Gallery.nodes;
       oldID = +nodes.current.dataset.id;
       newID = +thumb.dataset.id;
@@ -14715,6 +14915,7 @@ Gallery = (function() {
       nodes.count.textContent = +thumb.dataset.id + 1;
       nodes.name.download = nodes.name.textContent = thumb.title;
       nodes.name.href = thumb.href;
+      delete Gallery.originalImage;
       nodes.frame.scrollTop = 0;
       nodes.next.focus();
       $.rmAll(nodes.sauce);
@@ -14738,7 +14939,34 @@ Gallery = (function() {
         Header.scrollTo(post.nodes.root);
       }
       if (isNaN(oldID) || newID === (oldID + 1) % Gallery.images.length) {
-        return Gallery.cache = Gallery.load(Gallery.images[(newID + 1) % Gallery.images.length], Gallery.cacheError);
+        Gallery.cache = Gallery.load(Gallery.images[(newID + 1) % Gallery.images.length], Gallery.cacheError);
+      }
+      $.rmAll(nodes.externalImages);
+      if ((post = g.posts.get(file.dataset.post))) {
+        commentText = post.commentDisplay(true);
+        externalUrls = Gallery.extractImageUrls(commentText);
+        if (externalUrls.length > 0) {
+          Gallery.currentExternalUrls = externalUrls;
+          externalLinkElements = [];
+          title = $.el('span', {
+            textContent: 'Linked Files: ',
+            className: 'gal-external-title'
+          });
+          externalLinkElements.push(title);
+          ogButton = Gallery.createOGButton();
+          externalLinkElements.push(ogButton);
+          externalLinkElements.push($.tn(' '));
+          for (index = j = 0, ref2 = externalUrls.length; 0 <= ref2 ? j < ref2 : j > ref2; index = 0 <= ref2 ? ++j : --j) {
+            if (index > 0) {
+              externalLinkElements.push($.tn(' '));
+            }
+            externalLinkElements.push(Gallery.createExternalImagePreview(externalUrls[index], index));
+          }
+          $.add(nodes.externalImages, externalLinkElements);
+          return Gallery.updateActiveButton();
+        } else {
+          return delete Gallery.currentExternalUrls;
+        }
       }
     },
     error: function() {
@@ -15038,6 +15266,154 @@ Gallery = (function() {
         });
         return subEntries;
       }
+    },
+    createExternalImagePreview: function(url, index) {
+      var preview;
+      preview = $.el('a', {
+        href: url,
+        target: '_blank',
+        className: 'gal-external-preview',
+        title: url,
+        textContent: index + 1
+      });
+      preview.dataset.externalUrl = url;
+      preview.dataset.externalIndex = index;
+      $.on(preview, 'click', function(e) {
+        e.preventDefault();
+        return Gallery.openExternalImage(url);
+      });
+      return preview;
+    },
+    openExternalImage: function(url) {
+      var currentThumb, file, name, nodes, tempThumb;
+      nodes = Gallery.nodes;
+      currentThumb = Gallery.images[+nodes.current.dataset.id];
+      if (!Gallery.originalImage) {
+        Gallery.originalImage = {
+          href: currentThumb.href,
+          title: currentThumb.title,
+          dataset: {
+            id: nodes.current.dataset.id,
+            post: nodes.current.dataset.post,
+            file: nodes.current.dataset.file
+          }
+        };
+      }
+      tempThumb = {
+        href: url,
+        title: url,
+        dataset: {
+          id: nodes.current.dataset.id,
+          post: nodes.current.dataset.post,
+          file: nodes.current.dataset.file
+        }
+      };
+      file = Gallery.load(tempThumb, Gallery.error);
+      $.off(file, 'error', Gallery.error);
+      ImageCommon.pause(nodes.current);
+      $.replace(nodes.current, file);
+      nodes.current = file;
+      nodes.current.dataset.isExternal = true;
+      if (file.nodeName === 'VIDEO') {
+        file.loop = true;
+        Volume.setup(file);
+        if (Conf['Autoplay']) {
+          file.play();
+        }
+        if (Conf['Show Controls']) {
+          ImageCommon.addControls(file);
+        }
+      }
+      doc.classList.toggle('gal-pdf', file.nodeName === 'IFRAME');
+      Gallery.cb.setHeight();
+      if (url) {
+        name = url.split('/').pop();
+      }
+      if (!name) {
+        name = 'External Image';
+      }
+      nodes.name.download = nodes.name.textContent = name;
+      nodes.name.href = url;
+      Gallery.currentExternalUrl = url;
+      return Gallery.updateActiveButton();
+    },
+    updateActiveButton: function() {
+      var button, buttons, i, len, nodes, ogButton;
+      nodes = Gallery.nodes;
+      if (!nodes.externalImages) {
+        return;
+      }
+      buttons = $$('.gal-external-preview', nodes.externalImages);
+      for (i = 0, len = buttons.length; i < len; i++) {
+        button = buttons[i];
+        $.rmClass(button, 'gal-external-active');
+        if (button.dataset.externalUrl === Gallery.currentExternalUrl) {
+          $.addClass(button, 'gal-external-active');
+        }
+      }
+      if (Gallery.originalImage) {
+        ogButton = $('.gal-og-button', nodes.externalImages);
+        if (Gallery.currentExternalUrl === Gallery.originalImage.href) {
+          return $.addClass(ogButton, 'gal-external-active');
+        } else {
+          return $.rmClass(ogButton, 'gal-external-active');
+        }
+      }
+    },
+    returnToOriginal: function() {
+      var file, nodes;
+      if (!Gallery.originalImage) {
+        return;
+      }
+      nodes = Gallery.nodes;
+      file = Gallery.load(Gallery.originalImage, Gallery.error);
+      $.off(nodes.current, 'error', Gallery.error);
+      ImageCommon.pause(nodes.current);
+      $.replace(nodes.current, file);
+      nodes.current = file;
+      delete nodes.current.dataset.isExternal;
+      if (file.nodeName === 'VIDEO') {
+        file.loop = true;
+        Volume.setup(file);
+        if (Conf['Autoplay']) {
+          file.play();
+        }
+        if (Conf['Show Controls']) {
+          ImageCommon.addControls(file);
+        }
+      }
+      doc.classList.toggle('gal-pdf', file.nodeName === 'IFRAME');
+      Gallery.cb.setHeight();
+      nodes.name.download = nodes.name.textContent = Gallery.originalImage.title;
+      nodes.name.href = Gallery.originalImage.href;
+      delete Gallery.currentExternalUrl;
+      return Gallery.updateActiveButton();
+    },
+    createOGButton: function() {
+      var ogButton, ref;
+      ogButton = $.el('a', {
+        href: 'javascript:;',
+        className: 'gal-external-preview gal-og-button gal-external-active',
+        title: 'Return to original image',
+        textContent: 'OG'
+      });
+      ogButton.dataset.isOg = 'true';
+      ogButton.dataset.url = ((ref = Gallery.originalImage) != null ? ref.href : void 0) || Gallery.images[+Gallery.nodes.current.dataset.id].href;
+      Gallery.originalImage = Gallery.originalImage || {
+        href: Gallery.images[+Gallery.nodes.current.dataset.id].href,
+        title: Gallery.images[+Gallery.nodes.current.dataset.id].title,
+        dataset: {
+          id: Gallery.nodes.current.dataset.id,
+          post: Gallery.nodes.current.dataset.post,
+          file: Gallery.nodes.current.dataset.file
+        }
+      };
+      $.on(ogButton, 'click', function(e) {
+        e.preventDefault();
+        return Gallery.returnToOriginal();
+      });
+      Gallery.nodes.ogButton = ogButton;
+      return ogButton;
     }
   };
 
@@ -18197,13 +18573,13 @@ CatalogLinks = (function() {
               catalogLink = link.parentNode.cloneNode(true);
               link2 = catalogLink.firstElementChild;
               link2.href = catalogURL;
-              link2.textContent = link2.hostname === location.hostname ? '4chan X Catalog' : 'External Catalog';
+              link2.textContent = link2.hostname === location.hostname ? '4chan X Ferret Edition Catalog' : 'External Catalog';
               $.after(link.parentNode, [$.tn(' '), catalogLink]);
             }
           }
         });
       }
-      if (g.SITE.software === 'yotsuba' && Conf['JSON Index'] && Conf['Use 4chan X Catalog']) {
+      if (g.SITE.software === 'yotsuba' && Conf['JSON Index'] && Conf['Use 4chan X Ferret Edition Catalog']) {
         Callbacks.Post.push({
           name: 'Catalog Link Rewrite',
           cb: this.node
@@ -18325,7 +18701,7 @@ CatalogLinks = (function() {
       }
       if (Conf['External Catalog'] && (external = CatalogLinks.external(board))) {
         return external;
-      } else if (Index.enabledOn(board) && Conf['Use 4chan X Catalog']) {
+      } else if (Index.enabledOn(board) && Conf['Use 4chan X Ferret Edition Catalog']) {
         return CatalogLinks.jsonIndex(board, '#catalog');
       } else if ((nativeCatalog = Get.url('catalog', board))) {
         return nativeCatalog;
@@ -19993,7 +20369,7 @@ PassMessage = (function() {
       }
       msg = $.el('div', {
         className: 'box-outer top-box'
-      }, {innerHTML: "<div class=\"box-inner\"><div class=\"boxbar\"><h2>Trouble buying a 4chan Pass? (a message from 4chan X) <a href=\"javascript:;\" style=\"text-decoration: none; float: right; margin-right: 4px;\" title=\"Close\">×</a></h2></div><div class=\"boxcontent\">Check the 4chan X wiki for <a href=\"https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ#alternatives\" target=\"_blank\" rel=\"noopener\">alternative solutions</a>.</div></div>"});
+      }, {innerHTML: "<div class=\"box-inner\"><div class=\"boxbar\"><h2>Trouble buying a 4chan Pass? (a message from 4chan X) <a href=\"javascript:;\" style=\"text-decoration: none; float: right; margin-right: 4px;\" title=\"Close\">×</a></h2></div><div class=\"boxcontent\">Check the 4chan X wiki for <a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Captcha-FAQ#alternatives\" target=\"_blank\" rel=\"noopener\">alternative solutions</a>.</div></div>"});
       msg.style.cssText = 'padding-bottom: 0;';
       close = $('a', msg);
       $.on(close, 'click', function() {
@@ -24231,7 +24607,7 @@ QR = (function() {
       }
     },
     connectionError: function() {
-      return $.el('span', {innerHTML: "Connection error while posting. [<a href=\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions#connection-errors\" target=\"_blank\">More info</a>]"});
+      return $.el('span', {innerHTML: "Connection error while posting. [<a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions#connection-errors\" target=\"_blank\">More info</a>]"});
     },
     notifications: [],
     cleanNotifications: function() {
@@ -24416,7 +24792,7 @@ QR = (function() {
     openError: function() {
       var div;
       div = $.el('div');
-      $.extend(div, {innerHTML: "Could not open file. [<a href=\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions#error-reading-metadata\" target=\"_blank\">More info</a>]"});
+      $.extend(div, {innerHTML: "Could not open file. [<a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions#error-reading-metadata\" target=\"_blank\">More info</a>]"});
       return QR.error(div);
     },
     setFile: function(e) {
@@ -26014,7 +26390,7 @@ QR = (function() {
         return function() {
           $.off(el, event, onload);
           $.off(el, 'error', onerror);
-          _this.fileError("Corrupt " + (isVideo ? 'video' : 'image') + " or error reading metadata.", 'https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions#error-reading-metadata');
+          _this.fileError("Corrupt " + (isVideo ? 'video' : 'image') + " or error reading metadata.", 'https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions#error-reading-metadata');
           URL.revokeObjectURL(el.src);
           _this.nodes.el.removeAttribute('data-height');
           return $.event('QRMetadata', null, _this.nodes.el);
@@ -27277,10 +27653,10 @@ Main = (function() {
         if ($.platform === 'crx') {
           w = w.wrappedJSObject || w;
         }
-        if ('4chan X antidup' in w) {
+        if ('4chan X Ferret Edition antidup' in w) {
           return;
         }
-        w['4chan X antidup'] = true;
+        w['4chan X Ferret Edition antidup'] = true;
       } catch (error1) {}
       try {
         if (window.frameElement && ((ref = window.frameElement.src) === '' || ref === 'about:blank')) {
@@ -27444,7 +27820,7 @@ Main = (function() {
       return $.set(changes, function() {
         var el, ref;
         if ((ref = items['Show Updated Notifications']) != null ? ref : true) {
-          el = $.el('span', {innerHTML: "4chan X has been updated to <a href=\"https://github.com/ccd0/4chan-x/blob/master/CHANGELOG.md\" target=\"_blank\">version " + E(g.VERSION) + "</a>."});
+          el = $.el('span', {innerHTML: "4chan X Ferret Edition has been updated to <a href=\"https://github.com/ferret-terref/ferret-4chan-x/blob/master/CHANGELOG.md\" target=\"_blank\">version " + E(g.VERSION) + "</a>."});
           return new Notice('info', el, 15);
         }
       });
@@ -27980,7 +28356,7 @@ Main = (function() {
         if (enabled) {
           $.addClass(doc, 'tainted');
           if (Conf['Disable Native Extension'] && !Main.isFirstRun) {
-            msg = $.el('div', {innerHTML: "Failed to disable the native extension. You may need to <a href=\"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions#blocking-native-extension\" target=\"_blank\">block it</a>."});
+            msg = $.el('div', {innerHTML: "Failed to disable the native extension. You may need to <a href=\"https://github.com/ferret-terref/ferret-4chan-x/wiki/Frequently-Asked-Questions#blocking-native-extension\" target=\"_blank\">block it</a>."});
             new Notice('error', msg);
           }
         }
@@ -28017,7 +28393,7 @@ Main = (function() {
       });
       lines = ((ref = data.error.stack) != null ? (ref1 = ref.match(/\d+(?=:\d+\)?$)/mg)) != null ? ref1.join().replace(/^/, ' at ') : void 0 : void 0) || '';
       context = $.el('div', {
-        textContent: "(4chan X ccd0 v" + g.VERSION + " " + $.platform + " on " + $.engine + lines + ")"
+        textContent: "(4chan X Ferret Edition ferret-terref v" + g.VERSION + " " + $.platform + " on " + $.engine + lines + ")"
       });
       return [message, error, context];
     },
@@ -28030,11 +28406,11 @@ Main = (function() {
       }
       details = '';
       addDetails = function(text) {
-        if (!(encodeURIComponent(title + details + text + '\n').length > 8143)) {
+        if (!(encodeURIComponent(title + details + text + '\n').length > 8127)) {
           return details += text + '\n';
         }
       };
-      addDetails("[Please describe the steps needed to reproduce this error.]\n\nScript: 4chan X ccd0 v" + g.VERSION + " " + $.platform + "\nURL: " + location.href + "\nUser agent: " + navigator.userAgent);
+      addDetails("[Please describe the steps needed to reproduce this error.]\n\nScript: 4chan X Ferret Edition ferret-terref v" + g.VERSION + " " + $.platform + "\nURL: " + location.href + "\nUser agent: " + navigator.userAgent);
       if ($.platform === 'userscript' && (info = typeof GM !== "undefined" && GM !== null ? GM.info : (typeof GM_info !== "undefined" && GM_info !== null ? GM_info : void 0))) {
         addDetails("Userscript manager: " + info.scriptHandler + " " + info.version);
       }
@@ -28046,7 +28422,7 @@ Main = (function() {
         addDetails('\n`' + data.html + '`');
       }
       details = details.replace(/file:\/{3}.+\//g, '');
-      url = 'https://github.com/ccd0/4chan-x/issues'.replace('%title', encodeURIComponent(title)).replace('%details', encodeURIComponent(details));
+      url = 'https://github.com/ferret-terref/ferret-4chan-x/issues'.replace('%title', encodeURIComponent(title)).replace('%details', encodeURIComponent(details));
       return {innerHTML: "<span class=\"report-error\"> [<a href=\"" + E(url) + "\" target=\"_blank\">report</a>]</span>"};
     },
     isThisPageLegit: function() {

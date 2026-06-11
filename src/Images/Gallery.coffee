@@ -10,7 +10,7 @@ Gallery =
       className: 'fa fa-picture-o'
       textContent: 'Gallery'
 
-    $.on el, 'click', @cb.toggle
+    $.on el, 'click', Gallery.cb.toggle
 
     Header.addShortcut 'gallery', el, 530
 
@@ -19,6 +19,8 @@ Gallery =
       cb:   @node
 
   node: ->
+    return unless @
+
     for file in @files when file.thumb
       if Gallery.nodes
         Gallery.generateThumb @, file
@@ -26,6 +28,18 @@ Gallery =
 
       unless Conf['Image Expansion'] or (g.SITE.software is 'tinyboard' and Main.jsEnabled)
         $.on file.thumbLink, 'click', Gallery.cb.image
+
+    return unless Gallery.nodes and typeof @commentDisplay is 'function'
+
+    # Only process external posts here (matches JS behavior)
+    if (@files?.length or 0) is 0
+      postText = @commentDisplay true
+
+      externalUrls = Gallery.extractImageUrls postText
+
+      if externalUrls.length > 0
+        Gallery.generateExternalOnlyThumb @, externalUrls
+        Gallery.nodes.total.textContent = Gallery.images.length
 
   build: (image) ->
     {cb} = Gallery
@@ -55,6 +69,10 @@ Gallery =
       thumbs:  '.gal-thumbnails'
       next:    '.gal-image a'
       current: '.gal-image img'
+      # Custom extras
+      text: '.gal-post-text'
+      externalImages: '.gal-external-images'
+      textVisible:    false
     }
 
     menuButton = $ '.menu-button', dialog
@@ -83,15 +101,44 @@ Gallery =
 
     $.on window, 'resize', Gallery.cb.setHeight
 
-    for postThumb in $$ g.SITE.selectors.file.thumb
-      continue unless (post = Get.postFromNode postThumb)
-      for file in post.files when file.thumb
-        Gallery.generateThumb post, file
-        # If no image to open is given, pick image we have scrolled to.
-        if !image and Gallery.fileIDs["#{post.fullID}.#{file.index}"]
-          candidate = file.thumbLink
-          if Header.getTopOf(candidate) + candidate.getBoundingClientRect().height >= 0
-            image = candidate
+    allPosts = []
+    
+    if g.VIEW is 'thread'
+      if thread = g.threads.get g.BOARD + '.' + g.THREADID
+        allPosts.push thread.OP if thread.OP
+        if thread.posts?.forEach
+          thread.posts.forEach (post) ->
+            allPosts.push post
+    else
+      for postThumb in $$ g.SITE.selectors.file.thumb
+        if post = Get.postFromNode postThumb
+          allPosts.push post
+
+    console.log 'Total posts to process for gallery:', allPosts.length
+    console.log 'Posts:', allPosts
+
+    for post in allPosts
+      continue unless post
+      continue if post.isClone or post.isHidden
+
+      if post.files and post.files.length > 0
+        for file in post.files when file.thumb
+          Gallery.generateThumb post, file
+
+          if !image and Gallery.fileIDs["#{post.fullID}.#{file.index}"]
+            candidate = file.thumbLink
+            if Header.getTopOf(candidate) + candidate.getBoundingClientRect().height >= 0
+              image = candidate
+      else
+        continue unless typeof post.commentDisplay is 'function'
+
+        commentText = post.commentDisplay true
+        externalUrls = Gallery.extractImageUrls commentText
+        if externalUrls.length > 0
+          Gallery.generateExternalOnlyThumb post, externalUrls
+    
+    # External-only posts are handled per-node (NOT in build)
+
     $.addClass doc, 'gallery-open'
 
     $.add d.body, dialog
@@ -105,6 +152,52 @@ Gallery =
 
     doc.style.overflow = 'hidden'
     nodes.total.textContent = Gallery.images.length
+  
+  extractImageUrls: (text) ->
+    # console.log 'Extracting image URLs from text:', text
+    imageUrlRegex = /(https?:\/\/[^\s<>"]+\.(?:jpg|jpeg|png|gif|webp|bmp|mp4|webm)(?:\?[^\s<>"]*)?)(?=[\s<>"]|$)/gi
+    urls = []
+    while match = imageUrlRegex.exec text
+      urls.push match[1]
+    if urls.length > 0
+      console.log 'Extracted image URLs:', urls
+    return urls
+
+  generateExternalOnlyThumb: (post, externalUrls) ->
+    return if post.isClone or post.isHidden
+    return if Gallery.fileIDs["#{post.fullID}.external"]
+
+    Gallery.fileIDs["#{post.fullID}.external"] = true
+
+    thumb = $.el 'a',
+      className: 'gal-thumb gal-thumb-external'
+      href: externalUrls[0]
+      target: '_blank'
+      title: if externalUrls[0]
+        externalUrls[0].split('/').pop()
+      else
+        'External Image'
+
+    thumb.dataset.id = Gallery.images.length
+    thumb.dataset.post = post.fullID
+    thumb.dataset.file = 'external'
+    thumb.dataset.externalOnly = 'true'
+
+    thumbContainer = $.el 'div',
+      className: 'gal-thumb-external-icon'
+      textContent: '🔗'
+
+    thumbLabel = $.el 'div',
+      className: 'gal-thumb-external-label'
+      textContent: externalUrls.length
+
+    $.add thumbContainer, thumbLabel
+    $.add thumb, thumbContainer
+
+    $.on thumb, 'click', Gallery.cb.open
+
+    Gallery.images.push thumb
+    $.add Gallery.nodes.thumbs, thumb
 
   generateThumb: (post, file) ->
     return if post.isClone or post.isHidden
@@ -127,6 +220,16 @@ Gallery =
     thumbImg.style.cssText = ''
     $.add thumb, thumbImg
 
+    if typeof post.commentDisplay is 'function'
+      commentText = post.commentDisplay true
+      externalUrls = Gallery.extractImageUrls commentText
+      if externalUrls.length > 0
+        linkIcon = $.el 'span',
+          className: 'gal-thumb-link-indicator'
+          textContent: '🔗'
+          title: "#{externalUrls.length} external image(s)"
+        $.add thumb, linkIcon
+
     $.on thumb, 'click', Gallery.cb.open
 
     Gallery.images.push thumb
@@ -135,6 +238,7 @@ Gallery =
   load: (thumb, errorCB) ->
     ext = thumb.href.match /\w*$/
     elType = $.getOwn({'webm': 'video', 'mp4': 'video', 'ogv': 'video', 'pdf': 'iframe'}, ext) or 'img'
+    console.log "Loading #{elType} for thumbnail:", thumb, "with extension:", ext
     file = $.el elType
     $.extend file.dataset, thumb.dataset
     $.on file, 'error', errorCB
@@ -176,6 +280,9 @@ Gallery =
     nodes.count.textContent = +thumb.dataset.id + 1
     nodes.name.download     = nodes.name.textContent = thumb.title
     nodes.name.href         = thumb.href
+
+    delete Gallery.originalImage
+
     nodes.frame.scrollTop   = 0
     nodes.next.focus()
 
@@ -201,6 +308,36 @@ Gallery =
     # Preload next image
     if isNaN(oldID) or newID is (oldID + 1) % Gallery.images.length
       Gallery.cache = Gallery.load Gallery.images[(newID + 1) % Gallery.images.length], Gallery.cacheError
+
+    # External image links
+    $.rmAll nodes.externalImages
+
+    # if ((post = g.posts.get(file.dataset.post))) {
+    if (post = g.posts.get(file.dataset.post))
+      commentText = post.commentDisplay true
+      externalUrls = Gallery.extractImageUrls commentText
+
+      if externalUrls.length > 0
+        Gallery.currentExternalUrls = externalUrls
+        externalLinkElements = []
+        
+        title = $.el 'span', textContent: 'Linked Files: ', className: 'gal-external-title'
+        externalLinkElements.push title
+
+        ogButton = Gallery.createOGButton()
+        externalLinkElements.push ogButton
+        
+        externalLinkElements.push $.tn ' ' # space between OG button and external links
+
+        for index in [0...externalUrls.length]
+          if index > 0
+            externalLinkElements.push $.tn ' '
+          externalLinkElements.push Gallery.createExternalImagePreview externalUrls[index], index
+        $.add nodes.externalImages, externalLinkElements
+        Gallery.updateActiveButton()
+
+      else
+        delete Gallery.currentExternalUrls
 
   error: ->
     if @error?.code is MediaError.MEDIA_ERR_DECODE
@@ -412,3 +549,142 @@ Gallery =
       subEntries.push el: delayLabel
 
       subEntries
+
+  ## External Image Handling
+  createExternalImagePreview: (url, index) ->
+    preview = $.el 'a',
+      href: url
+      target: '_blank'
+      className: 'gal-external-preview'
+      title: url
+      textContent: index + 1
+
+    preview.dataset.externalUrl = url
+    preview.dataset.externalIndex = index
+    
+    $.on preview, 'click', (e) ->
+      e.preventDefault()
+      Gallery.openExternalImage url
+
+    return preview
+
+  openExternalImage: (url) ->
+    nodes = Gallery.nodes
+    currentThumb = Gallery.images[+nodes.current.dataset.id]
+    if (!Gallery.originalImage)
+      Gallery.originalImage = {
+        href: currentThumb.href
+        title: currentThumb.title
+        dataset: {
+          id: nodes.current.dataset.id
+          post: nodes.current.dataset.post
+          file: nodes.current.dataset.file
+        }
+      }
+
+    tempThumb = {
+      href: url
+      title: url
+      dataset: {
+        id: nodes.current.dataset.id
+        post: nodes.current.dataset.post
+        file: nodes.current.dataset.file
+      }
+    }
+
+    file = Gallery.load tempThumb, Gallery.error
+    $.off file, 'error', Gallery.error
+    ImageCommon.pause nodes.current
+    $.replace nodes.current, file
+
+    nodes.current = file
+    nodes.current.dataset.isExternal = true
+    if file.nodeName is 'VIDEO'
+      file.loop = true
+      Volume.setup file
+      file.play() if Conf['Autoplay']
+      ImageCommon.addControls file if Conf['Show Controls']
+
+    doc.classList.toggle 'gal-pdf', file.nodeName is 'IFRAME'
+    Gallery.cb.setHeight()
+    name = url.split('/').pop() if url
+    name = 'External Image' unless name
+    nodes.name.download     = nodes.name.textContent = name
+    nodes.name.href         = url
+    Gallery.currentExternalUrl = url
+    # update active button 
+    Gallery.updateActiveButton()
+
+  updateActiveButton: ->
+    nodes = Gallery.nodes
+    # If nodes doesn't have externalImages, we're not showing the external image list, so no need to update buttons
+    return unless nodes.externalImages
+
+    buttons = $$('.gal-external-preview', nodes.externalImages)
+    # for each button, remove the active class
+    for button in buttons
+      $.rmClass button, 'gal-external-active'
+      # if the button's data-external-url matches the current external url, add the active class
+      if button.dataset.externalUrl is Gallery.currentExternalUrl
+        $.addClass button, 'gal-external-active'
+    
+    if Gallery.originalImage
+      ogButton = $ '.gal-og-button', nodes.externalImages
+      if Gallery.currentExternalUrl is Gallery.originalImage.href
+        $.addClass ogButton, 'gal-external-active'
+      else
+        $.rmClass ogButton, 'gal-external-active'
+  
+  returnToOriginal: ->
+    return unless Gallery.originalImage
+
+    nodes = Gallery.nodes
+    file = Gallery.load Gallery.originalImage, Gallery.error
+    $.off nodes.current, 'error', Gallery.error
+    ImageCommon.pause nodes.current
+    $.replace nodes.current, file
+    nodes.current = file
+
+    delete nodes.current.dataset.isExternal
+
+    if file.nodeName is 'VIDEO'
+      file.loop = true
+      Volume.setup file
+      file.play() if Conf['Autoplay']
+      ImageCommon.addControls file if Conf['Show Controls']
+
+    doc.classList.toggle 'gal-pdf', file.nodeName is 'IFRAME'
+    Gallery.cb.setHeight()
+
+    nodes.name.download = nodes.name.textContent = Gallery.originalImage.title
+    nodes.name.href = Gallery.originalImage.href
+
+    delete Gallery.currentExternalUrl
+    Gallery.updateActiveButton()
+  
+  createOGButton: ->
+    ogButton = $.el 'a',
+      href: 'javascript:;'
+      className: 'gal-external-preview gal-og-button gal-external-active'
+      title: 'Return to original image'
+      textContent: 'OG'
+
+    ogButton.dataset.isOg = 'true'
+    ogButton.dataset.url = Gallery.originalImage?.href or Gallery.images[+Gallery.nodes.current.dataset.id].href
+
+    Gallery.originalImage = Gallery.originalImage or {
+      href: Gallery.images[+Gallery.nodes.current.dataset.id].href
+      title: Gallery.images[+Gallery.nodes.current.dataset.id].title
+      dataset: {
+        id: Gallery.nodes.current.dataset.id
+        post: Gallery.nodes.current.dataset.post
+        file: Gallery.nodes.current.dataset.file
+      }
+    }
+    $.on ogButton, 'click', (e) ->
+      e.preventDefault()
+      Gallery.returnToOriginal()
+
+
+    Gallery.nodes.ogButton = ogButton;
+    return ogButton
